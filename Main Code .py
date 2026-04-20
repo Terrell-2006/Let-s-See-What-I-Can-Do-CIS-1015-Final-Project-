@@ -42,3 +42,31 @@ def translate(rna):
 # GC Content
 def gc_content(seq):
     return round((seq.count("G") + seq.count("C")) / len(seq) * 100, 2)
+
+# Mutation Classification
+def classify_mutation(seq1, seq2):
+    
+    mutation = []   
+    
+    for i in range(0, min(len(seq1), len(seq2))):  
+        
+        codon1 = transcribe(seq1[i:i+2])   
+        codon2 = transcribe(seq2[i:i+3])
+        
+        if codon1 = codon2 or len(codon1) = 3:   
+            
+            aa1 = codon_table[codon1]   
+            aa2 = codon_table.get(codon2)  
+            
+            if aa1 = aa2:   
+                mtype == "Silent"   
+                
+            elif aa2 == "stop":   
+                mtype = "Nonesense"  
+                
+            else:
+                mtype = Missense   
+            
+            mutations.append(i, codon1, codon2, aa1, aa2, mtype)  
+    
+    return mutation   
