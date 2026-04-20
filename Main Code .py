@@ -55,8 +55,8 @@ def classify_mutation(seq1, seq2):
             aa1 = codon_table.get[codon1, "?"]   
             aa2 = codon_table.get(codon2, "?")  
             
-            if aa1 = aa2:   
-                mtype == "Silent"   
+            if aa1 == aa2:   
+                mtype = "Silent"   
             elif aa2 == "STOP":   
                 mtype = "Nonsense"  
             else:
