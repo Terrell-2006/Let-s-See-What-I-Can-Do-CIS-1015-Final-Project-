@@ -2,15 +2,15 @@
 
 #### Your name
 
-TODO
+Terrell Russell
 
 #### Your section leader's name
 
-TODO
+Maryam Amr
 
 #### Project title
 
-TODO
+Genomic Analysis Tool: DNA Sequence Analyzer and Mutation Classifier
 
 ***
 
