@@ -1,6 +1,6 @@
 # DNA Analyzer & Mutation Classifier
 
-# Full RNA Codon Table
+# Full RNA Codon Table 
 codon_table = {
     'UUU':'F','UUC':'F','UUA':'L','UUG':'L',
     'CUU':'L','CUC':'L','CUA':'L','CUG':'L',
@@ -18,7 +18,7 @@ codon_table = {
     'CGU':'R','CGC':'R','CGA':'R','CGG':'R',
     'AGU':'S','AGC':'S','AGA':'R','AGG':'R',
     'GGU':'G','GGC':'G','GGA':'G','GGG':'G'
-    }
+}
 
 # Validate DNA 
 def validate_dna(seq):
@@ -28,7 +28,7 @@ def validate_dna(seq):
 def transcribe(seq):
     return seq.replace("T", "U")
 
-# --- Translation ---
+# Translation
 def translate(rna):
     protein = ""
     for i in range(0, len(rna)-2, 3):
@@ -39,6 +39,6 @@ def translate(rna):
         protein += amino
     return protein
 
-# --- GC Content ---
+# GC Content
 def gc_content(seq):
     return round((seq.count("G") + seq.count("C")) / len(seq) * 100, 2)
