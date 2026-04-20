@@ -18,12 +18,12 @@ Short answers for the below questions suffice. If you want to alter your plan fo
 
 #### What have you done for your project so far?
 
-TODO
+I have built the main parts of my program, including DNA validation, transcription, translation, and GC content calculation. I also started implementing mutation detection and a FASTA file reader.
 
 #### What have you not done for your project yet?
 
-TODO
+I still need to fix some bugs in the mutation detection and file reading functions, finish integrating everything into the GUI, and improve the graphing feature.
 
 #### What problems, if any, have you encountered?
 
-TODO
+I had some issues with debugging functions, especially with mutation classification and reading files. I feel like I will run into some trouble with the graph.
