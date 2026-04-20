@@ -45,31 +45,26 @@ def gc_content(seq):
 
 # Mutation Classification (Fix)
 def classify_mutation(seq1, seq2):
+    mutations = []   
     
-    mutation = []   
-    
-    for i in range(0, min(len(seq1), len(seq2))):  
-        
-        codon1 = transcribe(seq1[i:i+2])   
+    for i in range(0, min(len(seq1), len(seq2)), 3):  
+        codon1 = transcribe(seq1[i:i+3])   
         codon2 = transcribe(seq2[i:i+3])
         
-        if codon1 = codon2 or len(codon1) = 3:   
-            
-            aa1 = codon_table[codon1]   
-            aa2 = codon_table.get(codon2)  
+        if codon1 != codon2 and len(codon1) == 3:   
+            aa1 = codon_table.get[codon1, "?"]   
+            aa2 = codon_table.get(codon2, "?")  
             
             if aa1 = aa2:   
                 mtype == "Silent"   
-                
-            elif aa2 == "stop":   
-                mtype = "Nonesense"  
-                
+            elif aa2 == "STOP":   
+                mtype = "Nonsense"  
             else:
-                mtype = Missense   
+                mtype = "Missense"   
             
-            mutations.append(i, codon1, codon2, aa1, aa2, mtype)  
+            mutations.append((i, codon1, codon2, aa1, aa2, mtype))  
     
-    return mutation
+    return mutations
 
 # FASTA file reader (Fix)
 def readFasta(filePath):
