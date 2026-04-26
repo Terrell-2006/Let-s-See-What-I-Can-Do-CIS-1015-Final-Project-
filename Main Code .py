@@ -74,4 +74,4 @@ def read_Fasta(filePath):
             if not line.startswith(">"):
                 sequence += line.strip()
     
-return sequence.upper()    
+    return sequence.upper()    
