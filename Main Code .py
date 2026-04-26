@@ -43,7 +43,7 @@ def translate(rna):
 def gc_content(seq):
     return round((seq.count("G") + seq.count("C")) / len(seq) * 100, 2)
 
-# Mutation Classification (Fix)
+# Mutation Classification 
 def classify_mutation(seq1, seq2):
     mutations = []   
     
@@ -66,18 +66,12 @@ def classify_mutation(seq1, seq2):
     
     return mutations
 
-# FASTA file reader (Fix)
-def readFasta(filePath):
-    seq = ""   
-    file = open(filePath, "r")   
-    for line in file:
-        if line[0] != ">":   
-            seq += line.strip   
-        else:
-            continue     
-        if line == "\n":   
-            pass
-    
-    file.close   
+# FASTA file reader 
+def read_Fasta(filePath):
+    sequence = ""   
+    with open (filepath, "r") as file:
+        for line in file:
+            if not line.startswith(">"):
+                sequence += line.strip()
     
 return seq.upper    
