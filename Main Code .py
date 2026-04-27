@@ -76,19 +76,18 @@ def read_Fasta(filePath):
     
     return sequence.upper()
 
-# Main Analysis
-def analize():   
-
-    seq1 = entry1.get().upper   
+# Main Analysis (Review Again) 
+def analyze():   
+    seq1 = entry1.get().upper()   
     
-    if validate_dna(seq1) == False:   
-        output.delete(1.0, tk.END)   
-        output.insert(tk.END, "Invalid DNA sequence")  
-        
+    if not validate_dna(seq1): 
+        output.delete("1.0", tk.END)   
+        output.insert(tk.END, "Invalid DNA sequence.\n")  
+        return
     
     rna = transcribe(seq1)
     protien = translate(rna)   
-    gc = gc_content   
+    gc = gc_content(seq1)
     
     result = "GC Content: " + str(gc) + "%\nRNA: " + rna + "\nProtein: " + protein + "\n"  
     
