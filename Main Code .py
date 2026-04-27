@@ -74,4 +74,34 @@ def read_Fasta(filePath):
             if not line.startswith(">"):
                 sequence += line.strip()
     
-    return sequence.upper()    
+    return sequence.upper()
+
+# Main Analysis
+def analize():   
+
+    seq1 = entry1.get().upper   
+    
+    if validate_dna(seq1) == False:   
+        output.delete(1.0, tk.END)   
+        output.insert(tk.END, "Invalid DNA sequence")  
+        
+    
+    rna = transcribe(seq1)
+    protien = translate(rna)   
+    gc = gc_content   
+    
+    result = "GC Content: " + str(gc) + "%\nRNA: " + rna + "\nProtein: " + protein + "\n"  
+    
+    seq2 = entry2.get().upper()  
+    
+    if seq2 != "":   
+        mutation = classify_mutation(seq1, seq2)   
+        
+        result += "\nMutations:\n"
+        
+        for m in mutation:
+            result += "Pos " + m[0] + ": " + m[1] + "->" + m[2] + " | " + m[3] + "->" + m[4] + " (" + m[5] + ")\n"
+            
+    
+    output.delete("1.0", tk.END)
+    output.insert(tk.END, results)   
