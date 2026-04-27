@@ -90,6 +90,7 @@ def analyze():
     gc = gc_content(seq1)
     
     result = f"GC Content: {gc}%\nRNA: {rna}\nProtein: 
+
     seq2 = entry2.get().upper()  
     
     if seq2:   
