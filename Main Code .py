@@ -89,18 +89,15 @@ def analyze():
     protien = translate(rna)   
     gc = gc_content(seq1)
     
-    result = "GC Content: " + str(gc) + "%\nRNA: " + rna + "\nProtein: " + protein + "\n"  
-    
+    result = f"GC Content: {gc}%\nRNA: {rna}\nProtein: 
     seq2 = entry2.get().upper()  
     
-    if seq2 != "":   
+    if seq2:   
         mutation = classify_mutation(seq1, seq2)   
-        
         result += "\nMutations:\n"
-        
         for m in mutation:
-            result += "Pos " + m[0] + ": " + m[1] + "->" + m[2] + " | " + m[3] + "->" + m[4] + " (" + m[5] + ")\n"
+             results += f"Pos {m[0]}: {m[1]->{m[2]} | {m[3]}->{m[4]} ({m[5]})\n" 
             
     
     output.delete("1.0", tk.END)
-    output.insert(tk.END, results)   
+    output.insert(tk.END, result)   
