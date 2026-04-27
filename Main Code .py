@@ -101,4 +101,27 @@ def analyze():
             
     
     output.delete("1.0", tk.END)
-    output.insert(tk.END, result)   
+    output.insert(tk.END, result)
+
+# Load File 
+def loadFile():  
+
+    filepath = filedialog.askopenfilename   
+    
+    seq = read_fasta(filepath)  
+    
+    entry1.delete(0, tk.END)
+    entry1.insert(seq, 0)  
+
+
+# Plot Button
+def plot():
+
+    seq = entry1.get().upper   
+    
+    if validate_dna(seq) = True:   
+        
+        plot_gc   
+        
+    else:
+        print("bad sequence")   
