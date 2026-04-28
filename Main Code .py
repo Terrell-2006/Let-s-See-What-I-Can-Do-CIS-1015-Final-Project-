@@ -128,7 +128,7 @@ tk.Label(root, text="DNA Sequence 1").pack()
 entry1 = tk.Entry(root, width=50)
 entry1.pack()
 
-tk.Lable(root, text="DNA Sequence 2 optional").pack()   
+tk.Label(root, text="DNA Sequence 2 optional").pack()   
 entry2 = tk.Entry(root, width=50)   
 entry2.pack()   
 
