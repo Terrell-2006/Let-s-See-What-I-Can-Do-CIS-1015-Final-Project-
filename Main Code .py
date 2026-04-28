@@ -103,7 +103,7 @@ def analyze():
     output.delete("1.0", tk.END)
     output.insert(tk.END, result)
 
-# Load File (Look Over For Bugs) 
+# Load File  
 def loadFile():  
     filepath = filedialog.askopenfilename()   
     seq = read_fasta(filepath)  
@@ -111,7 +111,7 @@ def loadFile():
     entry1.insert(seq, 0)  
 
 
-# Plot Button (Look Over For Bugs)
+# Plot Button 
 def plot():
     seq = entry1.get().upper   
     if validate_dna(seq):  
@@ -126,14 +126,14 @@ entry1 = tk.Entry(root, width=50)
 entry1.pack()
 
 tk.lable(root, text="DNA Sequence 2 optional").pack()   
-entry2 = tk.Entry(root, width="50")   
-entry2.pack   
+entry2 = tk.Entry(root, width=50)   
+entry2.pack()   
 
 tk.Button(root, text="Analyze", command=analize).pack()  
-tk.Button(root, text="Load FASTA File", command=loadFile).pack()   
-tk.Button(root, text="Plot GC Content", command=plot()).pack()  
+tk.Button(root, text="Load FASTA File", command=load_file).pack()   
+tk.Button(root, text="Plot GC Content", command=plot().pack()  
 
 output = tk.Text(root, height=15, width=60)
-output.pack   
+output.pack()  
 
-root.mainloop  
+root.mainloop() 
