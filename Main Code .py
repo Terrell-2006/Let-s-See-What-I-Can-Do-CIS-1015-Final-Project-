@@ -1,5 +1,9 @@
 # DNA Analyzer & Mutation Classifier
 
+import matplotlib.pyplot as plt
+import tkinter as tk
+from tkinter import filedialog
+
 # Full RNA Codon Table 
 codon_table = {
     'UUU':'F','UUC':'F','UUA':'L','UUG':'L',
@@ -130,7 +134,7 @@ entry2.pack()
 
 tk.Button(root, text="Analyze", command=analize).pack()  
 tk.Button(root, text="Load FASTA File", command=load_file).pack()   
-tk.Button(root, text="Plot GC Content", command=plot().pack()  
+tk.Button(root, text="Plot GC Content", command=plot).pack()  
 
 output = tk.Text(root, height=15, width=60)
 output.pack()  
