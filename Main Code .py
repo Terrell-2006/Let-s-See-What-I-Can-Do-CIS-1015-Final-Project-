@@ -105,11 +105,8 @@ def analyze():
 
 # Load File (Look Over For Bugs) 
 def loadFile():  
-
-    filepath = filedialog.askopenfilename   
-    
+    filepath = filedialog.askopenfilename()   
     seq = read_fasta(filepath)  
-    
     entry1.delete(0, tk.END)
     entry1.insert(seq, 0)  
 
@@ -126,7 +123,7 @@ def plot():
     else:
         print("bad sequence")
 
-# GUI
+# GUI (Look Over For Bugs)
 root = tk.Tk()
 root.title("Genomic Analysis Tool")
 
