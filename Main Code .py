@@ -126,10 +126,23 @@ def plot():
     else:
         print("bad sequence")
 
-# GUI 
+# GUI
 root = tk.Tk()
 root.title("Genomic Analysis Tool")
 
 tk.Label(root, text="DNA Sequence 1").pack()
 entry1 = tk.Entry(root, width=50)
 entry1.pack()
+
+tk.lable(root, text="DNA Sequence 2 optional").pack()   
+entry2 = tk.Entry(root, width="50")   
+entry2.pack   
+
+tk.Button(root, text="Analyze", command=analize).pack()  
+tk.Button(root, text="Load FASTA File", command=loadFile).pack()   
+tk.Button(root, text="Plot GC Content", command=plot()).pack()  
+
+output = tk.Text(root, height=15, width=60)
+output.pack   
+
+root.mainloop  
