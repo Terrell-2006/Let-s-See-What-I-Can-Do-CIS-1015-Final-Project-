@@ -103,7 +103,7 @@ def analyze():
     output.delete("1.0", tk.END)
     output.insert(tk.END, result)
 
-# Load File 
+# Load File (Look Over For Bugs) 
 def loadFile():  
 
     filepath = filedialog.askopenfilename   
@@ -114,7 +114,7 @@ def loadFile():
     entry1.insert(seq, 0)  
 
 
-# Plot Button
+# Plot Button (Look Over For Bugs)
 def plot():
 
     seq = entry1.get().upper   
@@ -124,4 +124,12 @@ def plot():
         plot_gc   
         
     else:
-        print("bad sequence")   
+        print("bad sequence")
+
+# GUI 
+root = tk.Tk()
+root.title("Genomic Analysis Tool")
+
+tk.Label(root, text="DNA Sequence 1").pack()
+entry1 = tk.Entry(root, width=50)
+entry1.pack()
