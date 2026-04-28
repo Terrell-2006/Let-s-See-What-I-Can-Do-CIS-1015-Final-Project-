@@ -80,7 +80,23 @@ def read_Fasta(filePath):
     
     return sequence.upper()
 
-# Main Analysis (Review Again) 
+# GC Content Graph 
+def plot_gc(seq):
+    plt.clf()
+    window_size = 10
+    gc_values = []
+    
+    for i in range(len(seq) - window_size + 1):
+        window = seq[i:i+window_size]
+        gc = (window.count("G") + window.count("C")) / window_size * 100
+        gc_values.append(gc)
+    
+    plt.plot(gc_values)
+    plt.title("GC Content Across Sequence")
+    plt.xlabel("Position")
+    plt.ylabel("GC %")
+    plt.show()
+# Main Analysis 
 def analyze():
     seq1 = entry1.get().upper()
     
@@ -120,7 +136,7 @@ def plot():
     if validate_dna(seq):  
         plot_gc(seq)   
 
-# GUI (Look Over For Bugs)
+# GUI 
 root = tk.Tk()
 root.title("Genomic Analysis Tool")
 
