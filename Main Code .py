@@ -107,7 +107,7 @@ def analyze():
 
 
 # Load File  
-def loadFile():  
+def load_file():  
     filepath = filedialog.askopenfilename()   
     seq = read_fasta(filepath)  
     entry1.delete(0, tk.END)
