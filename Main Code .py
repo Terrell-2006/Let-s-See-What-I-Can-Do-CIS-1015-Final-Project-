@@ -113,15 +113,9 @@ def loadFile():
 
 # Plot Button (Look Over For Bugs)
 def plot():
-
     seq = entry1.get().upper   
-    
-    if validate_dna(seq) = True:   
-        
-        plot_gc   
-        
-    else:
-        print("bad sequence")
+    if validate_dna(seq):  
+        plot_gc(seq)   
 
 # GUI (Look Over For Bugs)
 root = tk.Tk()
