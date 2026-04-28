@@ -77,31 +77,30 @@ def read_Fasta(filePath):
     return sequence.upper()
 
 # Main Analysis (Review Again) 
-def analyze():   
-    seq1 = entry1.get().upper()   
+def analyze():
+    seq1 = entry1.get().upper()
     
-    if not validate_dna(seq1): 
-        output.delete("1.0", tk.END)   
-        output.insert(tk.END, "Invalid DNA sequence.\n")  
+    if not validate_dna(seq1):
+        output.delete("1.0", tk.END)
+        output.insert(tk.END, "Invalid DNA sequence.\n")
         return
     
     rna = transcribe(seq1)
-    protien = translate(rna)   
+    protein = translate(rna)
     gc = gc_content(seq1)
     
-    result = f"GC Content: {gc}%\nRNA: {rna}\nProtein: 
-
-    seq2 = entry2.get().upper()  
+    result = f"GC Content: {gc}%\nRNA: {rna}\nProtein: {protein}\n"
     
-    if seq2:   
-        mutation = classify_mutation(seq1, seq2)   
+    seq2 = entry2.get().upper()
+    if seq2:
+        mutations = classify_mutations(seq1, seq2)
         result += "\nMutations:\n"
-        for m in mutation:
-             results += f"Pos {m[0]}: {m[1]->{m[2]} | {m[3]}->{m[4]} ({m[5]})\n" 
-            
+        for m in mutations:
+            result += f"Pos {m[0]}: {m[1]}→{m[2]} | {m[3]}→{m[4]} ({m[5]})\n"
     
     output.delete("1.0", tk.END)
     output.insert(tk.END, result)
+
 
 # Load File  
 def loadFile():  
