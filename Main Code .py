@@ -1,10 +1,10 @@
-# DNA Analyzer & Mutation Classifier
+# Advanced Genomic Analysis Tool
 
 import matplotlib.pyplot as plt
 import tkinter as tk
 from tkinter import filedialog
 
-# Full RNA Codon Table 
+# Full Codon Table
 codon_table = {
     'UUU':'F','UUC':'F','UUA':'L','UUG':'L',
     'CUU':'L','CUC':'L','CUA':'L','CUG':'L',
@@ -32,7 +32,7 @@ def validate_dna(seq):
 def transcribe(seq):
     return seq.replace("T", "U")
 
-# Translation
+# Translation 
 def translate(rna):
     protein = ""
     for i in range(0, len(rna)-2, 3):
@@ -43,41 +43,40 @@ def translate(rna):
         protein += amino
     return protein
 
-# GC Content
+# GC Content 
 def gc_content(seq):
     return round((seq.count("G") + seq.count("C")) / len(seq) * 100, 2)
 
 # Mutation Classification 
-def classify_mutation(seq1, seq2):
-    mutations = []   
+def classify_mutations(seq1, seq2):
+    mutations = []
     
-    for i in range(0, min(len(seq1), len(seq2)), 3):  
-        codon1 = transcribe(seq1[i:i+3])   
+    for i in range(0, min(len(seq1), len(seq2)), 3):
+        codon1 = transcribe(seq1[i:i+3])
         codon2 = transcribe(seq2[i:i+3])
         
-        if codon1 != codon2 and len(codon1) == 3:   
-            aa1 = codon_table.get[codon1, "?"]   
-            aa2 = codon_table.get(codon2, "?")  
+        if codon1 != codon2 and len(codon1) == 3:
+            aa1 = codon_table.get(codon1, "?")
+            aa2 = codon_table.get(codon2, "?")
             
-            if aa1 == aa2:   
-                mtype = "Silent"   
-            elif aa2 == "STOP":   
-                mtype = "Nonsense"  
+            if aa1 == aa2:
+                mtype = "Silent"
+            elif aa2 == "STOP":
+                mtype = "Nonsense"
             else:
-                mtype = "Missense"   
+                mtype = "Missense"
             
-            mutations.append((i, codon1, codon2, aa1, aa2, mtype))  
+            mutations.append((i, codon1, codon2, aa1, aa2, mtype))
     
     return mutations
 
-# FASTA file reader 
-def read_Fasta(filePath):
-    sequence = ""   
-    with open (filepath, "r") as file:
+# FASTA File Reader 
+def read_fasta(filepath):
+    sequence = ""
+    with open(filepath, "r") as file:
         for line in file:
             if not line.startswith(">"):
                 sequence += line.strip()
-    
     return sequence.upper()
 
 # GC Content Graph 
@@ -96,6 +95,7 @@ def plot_gc(seq):
     plt.xlabel("Position")
     plt.ylabel("GC %")
     plt.show()
+
 # Main Analysis 
 def analyze():
     seq1 = entry1.get().upper()
@@ -121,20 +121,18 @@ def analyze():
     output.delete("1.0", tk.END)
     output.insert(tk.END, result)
 
-
-# Load File  
-def load_file():  
-    filepath = filedialog.askopenfilename()   
-    seq = read_fasta(filepath)  
+# Load File 
+def load_file():
+    filepath = filedialog.askopenfilename()
+    seq = read_fasta(filepath)
     entry1.delete(0, tk.END)
-    entry1.insert(seq, 0)  
-
+    entry1.insert(0, seq)
 
 # Plot Button 
 def plot():
-    seq = entry1.get().upper   
-    if validate_dna(seq):  
-        plot_gc(seq)   
+    seq = entry1.get().upper()
+    if validate_dna(seq):
+        plot_gc(seq)
 
 # GUI 
 root = tk.Tk()
@@ -144,15 +142,15 @@ tk.Label(root, text="DNA Sequence 1").pack()
 entry1 = tk.Entry(root, width=50)
 entry1.pack()
 
-tk.Label(root, text="DNA Sequence 2 optional").pack()   
-entry2 = tk.Entry(root, width=50)   
-entry2.pack()   
+tk.Label(root, text="DNA Sequence 2 (optional)").pack()
+entry2 = tk.Entry(root, width=50)
+entry2.pack()
 
-tk.Button(root, text="Analyze", command=analyze).pack()  
-tk.Button(root, text="Load FASTA File", command=load_file).pack()   
-tk.Button(root, text="Plot GC Content", command=plot).pack()  
+tk.Button(root, text="Analyze", command=analyze).pack()
+tk.Button(root, text="Load FASTA File", command=load_file).pack()
+tk.Button(root, text="Plot GC Content", command=plot).pack()
 
 output = tk.Text(root, height=15, width=60)
-output.pack()  
+output.pack()
 
-root.mainloop() 
+root.mainloop()
